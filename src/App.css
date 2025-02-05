@@ -7,20 +7,21 @@
 
 body {
   margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
-  display: flex;
   background-color: #FFF7ED;
 }
 
 #root {
-  max-width: 1280px;
+  width: 100%;
 }
 
-.container{
+.site-wrapper{
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  height: 100%;
+}
+
+main{
+  flex-grow: 1;
 }
 
 
@@ -40,41 +41,48 @@ header.navBar{
 
 }
 
-.logo img{
-  width: 100%;
+ img{
+  max-width: 100%;
   display: block;
 }
 
-.navBar > nav {
+nav {
   display: flex;
   flex-direction: row;
   gap: 1rem;
 }
 
-.navBar > nav > a{
+nav > a{
   color: #4D4D4D;
   font-weight: 600;
   font-size: 1rem;
   text-decoration: none;
 }
 
-.navBar > nav a:hover {
+nav a:hover {
   color: #161616;
   text-decoration: underline;
 }
 
-.main-container{
-  flex: 1;
-  height: 100%;
-  width: 100%;
-  max-width: 550px;
+/* .navBar nav a.active{
+  font-weight: bold;
+  text-decoration: underline;
+  color: #161616;
+} */
+ nav a.active{
+  font-weight: bold;
+  text-decoration: underline;
+  color: #161616;
 }
+
+
 
 .home{
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(./assets/bg-home.png);
   background-size: cover;
   background-position: center;
   color:#FFFFFF;
+  height: 100%;
 }
 
 .home-container{
@@ -111,7 +119,7 @@ header.navBar{
 
 
 footer{
-  height: 75px;
+  min-height: 75px;
   background-color: #252525;
   color: #AAAAAA;
   display: grid;
@@ -166,4 +174,289 @@ footer{
   border: none;
   border-radius: 10px;
   margin-top: 1rem;
+}
+
+.vans{
+  padding: 2rem 1.5rem 3rem;
+}
+
+.vans h3{
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.filters{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #4D4D4D;
+  margin-bottom: 2rem;
+}
+
+.tags button{
+  background-color: #FFEAD0;
+  padding: .5rem 1.5rem;
+  font-weight: 500;
+  border-radius: 5px;
+  margin-right: 1.3rem;
+  border: none;
+  font-family: Inter;
+  color: #4D4D4D;
+  cursor: pointer;
+}
+
+.filters p{
+  padding: .5rem 1rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.vans-list{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+
+/* remove anchor style */
+a{
+  text-decoration: none;
+  color: inherit;
+  outline: 0;
+  cursor: pointer;
+}
+
+.van-image-container{
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+
+.van-info{
+  display: flex;
+  justify-content: space-between;
+}
+
+.van-name{
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.van-type{
+  display: grid;
+  place-content: center;
+  width: 86px;
+  height: 34px;
+  border-radius: 5px;
+  color: #FFEAD0;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.simple{
+  background-color: #E17654;
+}
+.rugged{
+  background-color: #115E59;
+}
+.luxury{
+  background-color: #161616;
+}
+
+
+.van-price{
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.van-rate{
+  font-weight: 500;
+  line-height: .5rem;
+  font-size: .875rem;
+  text-align: right;
+
+}
+
+.van-detail{
+  padding: 3rem 1.5rem;
+}
+
+.return-link{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  outline: 0;
+  color: inherit;
+  font-weight: 500;
+}
+
+.arrow-icon{
+  color: #858585;
+}
+
+.detail-img-container{
+  max-width: 497.32px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-block: 2rem;
+}
+
+.detail-name{
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+.detail-price span{
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.detail-price{
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+
+.van-detail > button{
+  width: 100%;
+  background-color: #FF8C38;
+  border: none;
+  border-radius: 6px;
+  padding-block: 1rem;  
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-top: 1.5rem;
+  cursor: pointer;
+}
+
+/* --------HOST----------- */
+.host{
+  margin: 1.5rem;
+}
+
+.host-vans{
+  margin-top: 2rem;
+}
+
+.host-vans h2{
+  margin-bottom: 2rem;
+}
+
+.host-van-el{
+  background-color: #FFFFFF;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  padding: 1rem 1.5rem;
+  display: grid;
+  grid-template-areas: 
+    "a b"
+    "a c";
+    justify-content: left;
+    align-items: center;
+    gap: 0 1rem;
+}
+
+.host-van-img{
+  width: 66px;
+  grid-area: a;
+}
+
+.host-van-img img{
+  border-radius: 6px;
+}
+
+.host-van-el h3{
+  grid-area: b;
+  font-size: 1.25rem;
+  align-self: end;
+}
+.host-van-el p{
+  grid-area: c;
+  font-weight: 500;
+  align-self: start;
+}
+
+/* ------ Host detail ---------- */
+
+
+.van-host-info{
+  margin-block: 2rem;
+}
+
+.van-host-info-container{
+  background-color: #FFFFFF;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  border-radius: 6px;
+}
+
+
+.vhd-header{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.vhd-img-container{
+  width: 160px;
+}
+
+.vhd-img-container img{
+  border-radius: 6px;
+}
+
+.vhd-info .van-type{
+  width: 70px;
+  height: 27.5px;
+  font-size: .81rem; 
+}
+
+.vhd-info h3{
+  font-size: 1.625rem;
+  margin-top: 1rem;
+}
+
+.vhd-price span{
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.van-host-detail > p {
+  font-size: .875rem;
+  margin-top: 1rem;
+}
+
+.van-host-pricing span{
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.van-host-pricing{
+  margin-top: 2rem;
+}
+
+.van-host-photos{
+  width: 103px;
+  margin-top: 2rem;
+}
+
+.van-host-photos img{
+  border-radius: 6px;
+}
+
+.simple{
+  background-color: #E17654;
+  color: #FFEAD0;
+}
+
+.rugged{
+  background-color: #115E59;
+  color: #FFEAD0;
+}
+
+.luxury{
+  background-color: #161616;
+  color: #FFEAD0;
 }
