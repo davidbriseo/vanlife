@@ -1,24 +1,34 @@
 import {useEffect, useState} from 'react'
 import {Link, useSearchParams} from 'react-router'
+import { getVans } from '../api'
 import { clsx } from 'clsx'
 
 export default function Vans(){
 
     const [vansData, setVansData] = useState([])
     const [searchParams, setSearchParams] = useSearchParams()
-
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(null)
+    
+    const typeFilter = searchParams.get("type")
 
     useEffect(()=>{
-        fetch("/api/vans")
-           .then(res => res.json())
-           .then(data=> setVansData(data.vans))
+        async function loadVans() {
+            try{
+                setLoading(true)
+                const data = await getVans()
+                setVansData(data)
+            }catch(err) {
+                setError(err)
+            }
+            setLoading(false)
+        }
+        loadVans()
     },[])
 
 
-    const typeFilter = searchParams.get("type")
 
     const vansElements = vansData
-
         .filter( van => typeFilter? van.type === typeFilter : van)
         .map(van => {
 
@@ -26,7 +36,10 @@ export default function Vans(){
             <div className='van-element' id={van.id} key={van.id}>
                 <Link 
                     to={van.id}
-                    state={{search: searchParams.toString()}}
+                    state={{
+                            search: searchParams.toString(),
+                            type: typeFilter
+                        }}
                 >
                     <div className='van-image-container'>
                         <img src={van.imageUrl} alt={van.name}></img>
@@ -45,6 +58,14 @@ export default function Vans(){
             </div>
         )
     })
+
+    if (loading) {
+        return <h1>Loading ...</h1>
+    }
+
+    if (error) {
+        return <h1>There was an error: {error.message}</h1>
+    }
 
     const bgStyles = {
         backgroundColor: 

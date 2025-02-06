@@ -17,6 +17,7 @@ import HostVansLayout from './components/HostVansLayout'
 import HostVansDetail from './Routes/Host/HostVans/HostVansDetail'
 import HostVansPricing from './Routes/Host/HostVans/HostVansPricing'
 import HostVansPhotos from './Routes/Host/HostVans/HostVansPhotos'
+import PageNotFound from './Routes/PageNotFound'
 import { BrowserRouter, Routes, Route, Link } from 'react-router'
 import "./server"
 
@@ -42,6 +43,7 @@ function App() {
               <Route path="photos" element={<HostVansPhotos/>}/>
             </Route>
           </Route>
+          <Route path='*' element={<PageNotFound/>}/>
         </Route>
       </Routes>
       

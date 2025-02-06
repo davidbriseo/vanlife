@@ -460,3 +460,27 @@ a{
   background-color: #161616;
   color: #FFEAD0;
 }
+
+.page-not-found{
+  display: grid;
+  place-items: center;
+  align-content: center;
+  height: 100%;
+  margin: 0 2rem;
+}
+
+.page-not-found h1{
+  font-size: 2rem;
+}
+
+.page-not-found a {
+  background-color: #161616;
+  color: #FFFFFF;
+  width: 100%;
+  text-align: center;
+  padding-block: 1rem ;
+  font-size: 1.125rem;
+  font-weight: 700;
+  border-radius: 6px;
+  margin-top: 2rem;
+}

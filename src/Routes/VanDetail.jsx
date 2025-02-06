@@ -19,6 +19,11 @@ export default function VanDetail(){
 
     const search = location.state?.search || ""
 
+    const backToType = search? search.split("=")[1] : ""
+
+
+    const type = location.state?.type || "all"
+
     return(
         <section className="van-detail main-container">
             <Link 
@@ -27,7 +32,7 @@ export default function VanDetail(){
                 relative="path"
             >
                 <FaArrowLeftLong className="arrow-icon"/>
-                <span>Back to all vans</span>
+                <span>Back to {type} vans</span>
             </Link>
             {vanDetail? (
                 <>
