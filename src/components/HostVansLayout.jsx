@@ -1,16 +1,14 @@
-import { Outlet, useParams, NavLink, Link } from "react-router"
+import { Outlet, useParams, NavLink, Link, useLoaderData } from "react-router"
 import { useEffect, useState } from "react"
+import { getHostVans } from "../api"
+
+export function loader({params}){
+    return getHostVans(params.id)
+}
 
 export default function HostVansLayout(){
 
-    const [hostVanDetail, setHostVanDetail] = useState([])
-    const params = useParams()
-
-    useEffect(()=>{
-        fetch(`/api/host/vans/${params.id}`)
-            .then(res => res.json())
-            .then(data => setHostVanDetail(data.vans[0]))
-    }, [params.id])
+    const hostVanDetail = useLoaderData()[0]
 
     return(
         <section className="van-host-info">

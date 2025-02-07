@@ -1,67 +1,51 @@
 import {useEffect, useState} from 'react'
-import {Link, useSearchParams} from 'react-router'
+import {Link, useSearchParams, useLoaderData} from 'react-router'
 import { getVans } from '../api'
 import { clsx } from 'clsx'
 
+export function loader(){
+    return getVans()
+}
+
 export default function Vans(){
 
-    const [vansData, setVansData] = useState([])
     const [searchParams, setSearchParams] = useSearchParams()
-    const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
     
+    const vansData = useLoaderData()
+
     const typeFilter = searchParams.get("type")
-
-    useEffect(()=>{
-        async function loadVans() {
-            try{
-                setLoading(true)
-                const data = await getVans()
-                setVansData(data)
-            }catch(err) {
-                setError(err)
-            }
-            setLoading(false)
-        }
-        loadVans()
-    },[])
-
-
 
     const vansElements = vansData
         .filter( van => typeFilter? van.type === typeFilter : van)
         .map(van => {
-
-        return(
-            <div className='van-element' id={van.id} key={van.id}>
-                <Link 
-                    to={van.id}
-                    state={{
-                            search: searchParams.toString(),
-                            type: typeFilter
-                        }}
-                >
-                    <div className='van-image-container'>
-                        <img src={van.imageUrl} alt={van.name}></img>
-                    </div>
-                    <div className='van-info'>
-                        <div className='van-text-container'>
-                            <p className='van-name'>{van.name}</p>
-                            <span className={`van-type ${van.type}`}>{van.type}</span>
+            return(
+                <div className='van-element' id={van.id} key={van.id}>
+                    <Link 
+                        to={van.id}
+                        state={{
+                                search: searchParams.toString(),
+                                type: typeFilter
+                            }}
+                    >
+                        <div className='van-image-container'>
+                            <img src={van.imageUrl} alt={van.name}></img>
                         </div>
-                        <div className='van-price-container'>
-                            <p className='van-price'>{`$${van.price}`}</p>
-                            <p className='van-rate'>/day</p>
+                        <div className='van-info'>
+                            <div className='van-text-container'>
+                                <p className='van-name'>{van.name}</p>
+                                <span className={`van-type ${van.type}`}>{van.type}</span>
+                            </div>
+                            <div className='van-price-container'>
+                                <p className='van-price'>{`$${van.price}`}</p>
+                                <p className='van-rate'>/day</p>
+                            </div>
                         </div>
-                    </div>
-                </Link>
-            </div>
-        )
+                    </Link>
+                </div>
+            )
     })
 
-    if (loading) {
-        return <h1>Loading ...</h1>
-    }
 
     if (error) {
         return <h1>There was an error: {error.message}</h1>

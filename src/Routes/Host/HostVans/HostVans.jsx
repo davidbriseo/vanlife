@@ -1,15 +1,14 @@
-import { Link } from "react-router"
+import { Link, useLoaderData } from "react-router"
 import { useEffect, useState } from "react"
+import { getHostVans } from "../../../api"
+
+export function loader(){
+    return getHostVans()
+}
+
 export default function HostVans(){
-//aqui solo vamos a pasar el id que luego va  reconocer mi funcion useParams
 
-    const [hostVans, setHostVans] = useState([])
-
-    useEffect(()=>{
-        fetch("/api/host/vans")
-            .then(res => res.json())
-            .then(data => setHostVans(data.vans))
-    }, [])
+    const hostVans = useLoaderData()
 
     const hostDetailEl = hostVans.map(van => (
         

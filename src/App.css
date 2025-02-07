@@ -484,3 +484,69 @@ a{
   border-radius: 6px;
   margin-top: 2rem;
 }
+
+.icon{
+  display: grid;
+  place-content: center;
+}
+
+.login{
+  display: grid;
+  place-content: center;
+  height: 100%;
+  margin: 0 1em;
+}
+
+.login h1{
+  font-size: 2rem;
+  text-align: center;
+}
+
+.login-form{
+  margin-top: 2rem;
+  display: grid;
+}
+
+.login-form input{
+  border: #D1D5DB solid 1px;
+  padding: 1rem;
+  /* max-width: 450px; */
+}
+
+.form-email{
+  border-radius: 6px 6px 0 0;
+}
+.form-password{
+  border-radius: 0 0 6px 6px;
+}
+
+.login-form button{
+  margin-top: 1rem;
+  background-color: #FF8C38;
+  color: #FFFFFF;
+  padding-block: 1rem;
+  border: none;
+  border-radius: 6px;
+  font-family: Inter;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.login > p{
+  font-weight: 500;
+  margin-block: 2.5rem;
+  text-align: center;
+}
+
+.login > p span{
+  font-weight: 700;
+  color: #FF8C38;
+}
+
+.message-prompt{
+  color: red;
+  font-weight: 700;
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: 1.25px;
+}

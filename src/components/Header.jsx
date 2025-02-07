@@ -1,5 +1,7 @@
 import { NavLink, Link } from "react-router"
 import vanlifeLogo from '../assets/vanlife-logo.png'
+import { FaRegUserCircle } from "react-icons/fa";
+
 
 export default function Header (){
 
@@ -10,7 +12,7 @@ export default function Header (){
           <div className='logo'>
             <Link to="/"><img src={vanlifeLogo}/></Link>
           </div>
-          <nav>
+          <nav className="header-nav">
             
             <NavLink 
               to="/host"
@@ -31,6 +33,13 @@ export default function Header (){
               className= {({ isActive })=>isActive? "active" : ""} 
             >
               Vans
+            </NavLink>
+
+            <NavLink
+              to="/login"
+              className="icon" 
+            >
+                <FaRegUserCircle/>
             </NavLink>
           </nav>
       </header>
